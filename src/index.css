@@ -1,1 +1,80 @@
 @import "tailwindcss";
+
+@keyframes network-progress-slide {
+	0% {
+		transform: translateX(-110%);
+	}
+	50% {
+		transform: translateX(130%);
+	}
+	100% {
+		transform: translateX(330%);
+	}
+}
+
+.network-progress-indicator {
+	animation: network-progress-slide 1.15s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.network-progress-indicator {
+		animation-duration: 2.4s;
+	}
+}
+
+@keyframes callnow-heartbeat {
+	0%,
+	100% {
+		transform: scale(1);
+	}
+	8% {
+		transform: scale(1.1);
+	}
+	16% {
+		transform: scale(0.98);
+	}
+	25% {
+		transform: scale(1.06);
+	}
+	38% {
+		transform: scale(1);
+	}
+}
+
+@keyframes callnow-ecg {
+	0% {
+		stroke-dashoffset: 80;
+		opacity: 0.35;
+	}
+	55%,
+	100% {
+		stroke-dashoffset: 0;
+		opacity: 1;
+	}
+}
+
+.callnow-logo-heart {
+	transform-box: fill-box;
+	transform-origin: center;
+	animation: callnow-heartbeat 1.6s ease-in-out infinite;
+}
+
+.callnow-logo-ecg {
+	animation: callnow-ecg 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.callnow-logo-heart,
+	.callnow-logo-ecg {
+		animation: none;
+	}
+
+	.callnow-logo-heart {
+		transform: none;
+	}
+
+	.callnow-logo-ecg {
+		stroke-dashoffset: 0;
+		opacity: 1;
+	}
+}

@@ -6,13 +6,27 @@ interface AuthProps {
   mode: AuthMode;
   onOpenChange: (open: boolean) => void;
   onModeChange: (mode: AuthMode) => void;
+  onAuthSuccess: () => void;
+  notice?: string;
 }
 
-const Auth = ({ open, mode, onOpenChange, onModeChange }: AuthProps) => {
+const Auth = ({
+  open,
+  mode,
+  onOpenChange,
+  onModeChange,
+  onAuthSuccess,
+  notice,
+}: AuthProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-h-[calc(100dvh-2rem)] overflow-y-auto p-0">
-        <Login mode={mode} onModeChange={onModeChange} />
+        <Login
+          mode={mode}
+          onModeChange={onModeChange}
+          onAuthSuccess={onAuthSuccess}
+          notice={notice}
+        />
       </DialogContent>
     </Dialog>
   );

@@ -1,17 +1,27 @@
 import { ArrowUpRight, Clock3, Mail, MapPin, PhoneCall } from "lucide-react";
+import { Link } from "react-router";
 import callNowIcon from "@/assets/callnow.svg";
+import {
+  getAccessToken,
+  getLoginRequiredUrl,
+  PASSENGER_BOOKING_PATH,
+} from "@/lib/authSession";
 import { Button } from "@/components/ui/button";
 
 const Footer = () => {
+  const bookingPath = getAccessToken()
+    ? PASSENGER_BOOKING_PATH
+    : getLoginRequiredUrl(PASSENGER_BOOKING_PATH);
+
   return (
     <footer className="bg-[#102a43] text-white">
       <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8 lg:px-10 lg:py-16">
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           <div className="max-w-xs">
-            <a href="/" className="inline-flex items-center gap-3" aria-label="CallNow home">
+            <Link to="/" className="inline-flex items-center gap-3" aria-label="CallNow home">
               <img src={callNowIcon} alt="" className="size-11" />
               <span className="text-xl font-semibold tracking-tight">CallNow</span>
-            </a>
+            </Link>
             <p className="mt-5 text-sm leading-6 text-[#b6c8d3]">Connecting patients with dependable ambulance care when every minute matters.</p>
             <div className="mt-6 flex items-center gap-2 text-xs font-medium text-[#91b1bf]"><span className="size-2 rounded-full bg-[#2a9d8f]" />Dispatch network online</div>
           </div>
@@ -19,20 +29,20 @@ const Footer = () => {
           <div>
             <h2 className="text-sm font-semibold text-white">Platform</h2>
             <nav className="mt-5 flex flex-col items-start gap-3 text-sm text-[#b6c8d3]" aria-label="Platform links">
-              <a href="#how-it-works" className="transition-colors hover:text-white">How it works</a>
-              <a href="#book" className="transition-colors hover:text-white">Request an ambulance</a>
-              <a href="#scheduled" className="transition-colors hover:text-white">Schedule transport</a>
-              <a href="#" className="transition-colors hover:text-white">For ambulance partners</a>
+              <Link to="/#how-it-works" className="transition-colors hover:text-white">How it works</Link>
+              <Link to={bookingPath} className="transition-colors hover:text-white">Request an ambulance</Link>
+              <Link to="/#scheduled" className="transition-colors hover:text-white">Schedule transport</Link>
+              <Link to="/contact" className="transition-colors hover:text-white">For ambulance partners</Link>
             </nav>
           </div>
 
           <div>
             <h2 className="text-sm font-semibold text-white">Company</h2>
             <nav className="mt-5 flex flex-col items-start gap-3 text-sm text-[#b6c8d3]" aria-label="Company links">
-              <a href="#" className="transition-colors hover:text-white">About CallNow</a>
-              <a href="#" className="transition-colors hover:text-white">Safety and trust</a>
-              <a href="#" className="transition-colors hover:text-white">Help center</a>
-              <a href="#" className="transition-colors hover:text-white">Privacy policy</a>
+              <Link to="/" className="transition-colors hover:text-white">About CallNow</Link>
+              <Link to="/#trust" className="transition-colors hover:text-white">Safety and trust</Link>
+              <Link to="/help" className="transition-colors hover:text-white">Help center</Link>
+              <Link to="/contact" className="transition-colors hover:text-white">Contact us</Link>
             </nav>
           </div>
 

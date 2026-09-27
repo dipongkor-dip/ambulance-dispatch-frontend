@@ -1,0 +1,66 @@
+import { useState, type FormEvent } from "react";
+import { UserRound } from "lucide-react";
+import { Button } from "../ui/button";
+import { useGetProfileQuery, useUpdateProfileMutation } from "../../redux/auth/auth.api";
+import { getApiErrorMessage, SectionHeading, StatusBadge } from "./DashboardShared";
+
+export default function DashboardProfile() {
+  const { data: user, isLoading } = useGetProfileQuery();
+  const [updateProfile, { isLoading: isSaving }] = useUpdateProfileMutation();
+  const [feedback, setFeedback] = useState("");
+
+  const submitProfile = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    setFeedback("");
+    try {
+      await updateProfile({
+        firstname: String(data.get("firstname") ?? "").trim(),
+        lastname: String(data.get("lastname") ?? "").trim(),
+        email: String(data.get("email") ?? "").trim(),
+      }).unwrap();
+      setFeedback("Profile updated.");
+    } catch (error) {
+      setFeedback(getApiErrorMessage(error, "Could not update your profile."));
+    }
+  };
+
+  if (isLoading || !user) {
+    return <div className="py-10 text-sm text-[#71807b]">Loading profile...</div>;
+  }
+
+  const fullName = [user.firstname, user.lastname].filter(Boolean).join(" ") || user.username;
+
+  return (
+    <section className="space-y-6">
+      <SectionHeading eyebrow="Your account" title="Profile" />
+      {feedback && <p className="rounded-md border border-[#dce9e2] bg-white px-4 py-3 text-sm text-[#315844]" role="status">{feedback}</p>}
+
+      <div className="flex flex-wrap items-center gap-4 border-b border-[#dfe8e3] pb-6">
+        <span className="flex size-14 items-center justify-center rounded-full bg-[#e5f4ee] text-[#26725c]"><UserRound className="size-6" /></span>
+        <div className="min-w-0 flex-1">
+          <h1 className="truncate text-xl font-semibold text-[#17332f]">{fullName}</h1>
+          <p className="mt-1 text-sm text-[#71807b]">@{user.username}</p>
+        </div>
+        <StatusBadge status={user.is_active ? "active" : "inactive"} />
+      </div>
+
+      <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <dl className="grid content-start gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          <div className="border-b border-[#e3eae6] pb-3"><dt className="text-xs font-medium text-[#84918d]">Username</dt><dd className="mt-1 text-sm font-medium text-[#253b36]">{user.username}</dd></div>
+          <div className="border-b border-[#e3eae6] pb-3"><dt className="text-xs font-medium text-[#84918d]">Role</dt><dd className="mt-1 text-sm font-medium capitalize text-[#253b36]">{user.role}</dd></div>
+          <div className="border-b border-[#e3eae6] pb-3"><dt className="text-xs font-medium text-[#84918d]">Member since</dt><dd className="mt-1 text-sm font-medium text-[#253b36]">{new Date(user.created_at).toLocaleDateString()}</dd></div>
+          <div className="border-b border-[#e3eae6] pb-3"><dt className="text-xs font-medium text-[#84918d]">Account status</dt><dd className="mt-1 text-sm font-medium capitalize text-[#253b36]">{user.is_active ? "Active" : "Inactive"}</dd></div>
+        </dl>
+
+        <form onSubmit={submitProfile} className="space-y-4 rounded-lg border border-[#e3eae6] bg-white p-5">
+          <div><h2 className="text-sm font-semibold text-[#253b36]">Edit personal information</h2><p className="mt-1 text-xs text-[#84918d]">Username and role are managed by your administrator.</p></div>
+          <label className="block text-xs font-medium text-[#64716d]">First name<input name="firstname" required defaultValue={user.firstname} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
+          <label className="block text-xs font-medium text-[#64716d]">Last name<input name="lastname" required defaultValue={user.lastname} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
+          <label className="block text-xs font-medium text-[#64716d]">Email address<input name="email" type="email" required defaultValue={user.email} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
+          <Button type="submit" disabled={isSaving} className="h-9 rounded-md bg-[#1c6256] px-4 text-white hover:bg-[#174f46]">{isSaving ? "Saving..." : "Save profile"}</Button>
+        </form>
+      </div>
+    </section>
+  );
+}

@@ -1,4 +1,5 @@
 import { Clock3, PhoneCall } from "lucide-react";
+import { Link } from "react-router";
 
 const BookingSection = () => (
   <section
@@ -34,8 +35,8 @@ const BookingSection = () => (
             <PhoneCall className="size-4" />
           </span>
         </a>
-        <a
-          href="#scheduled"
+        <Link
+          to="/#scheduled"
           className="group flex items-center justify-between rounded-xl border border-[#d8e5ea] bg-[#f8fbfc] p-4 transition-colors hover:border-[#2a9d8f] hover:bg-[#f4fbf9]"
         >
           <span>
@@ -49,7 +50,7 @@ const BookingSection = () => (
           <span className="flex size-10 items-center justify-center rounded-full bg-[#dff3ef] text-[#208478]">
             <Clock3 className="size-4" />
           </span>
-        </a>
+        </Link>
       </div>
     </div>
   </section>

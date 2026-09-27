@@ -2,7 +2,7 @@ import { CheckCircle2, ShieldCheck } from "lucide-react";
 import { benefits } from "./homeData";
 
 const TrustSection = () => (
-  <section className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-10 lg:py-24">
+  <section id="trust" className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:px-10 lg:py-24">
     <div>
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#d62839]">
         Built for peace of mind

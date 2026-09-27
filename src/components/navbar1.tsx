@@ -1,7 +1,8 @@
 "use client";
 
-import { Menu } from "lucide-react";
+import { LayoutDashboard, Menu } from "lucide-react";
 import { cn } from "cn";
+import { Link } from "react-router";
 
 import {
   Accordion,
@@ -50,8 +51,13 @@ interface Navbar1Props {
       title: string;
       url: string;
     };
+    dashboard?: {
+      title: string;
+      url: string;
+    };
     onLoginClick?: () => void;
     onSignupClick?: () => void;
+    onDashboardClick?: () => void;
   };
 }
 
@@ -63,13 +69,13 @@ const Navbar1 = ({ logo, menu, auth }: Navbar1Props) => {
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
+            <Link to={logo.url} className="flex items-center gap-2">
               <img
                 src={logo.src}
                 className={cn("size-11", logo.className)}
                 alt={logo.alt}
               />
-            </a>
+            </Link>
             <div className="flex items-center">
               <NavigationMenu>
                 <NavigationMenuList>
@@ -79,23 +85,37 @@ const Navbar1 = ({ logo, menu, auth }: Navbar1Props) => {
             </div>
           </div>
           <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={auth.onLoginClick}
-              render={auth.onLoginClick ? undefined : <a href={auth.login.url} />}
-              nativeButton={auth.onLoginClick ? true : false}
-            >
-              {auth.login.title}
-            </Button>
-            <Button
-              size="sm"
-              onClick={auth.onSignupClick}
-              render={auth.onSignupClick ? undefined : <a href={auth.signup.url} />}
-              nativeButton={auth.onSignupClick ? true : false}
-            >
-              {auth.signup.title}
-            </Button>
+            {auth.dashboard ? (
+              <Button
+                size="sm"
+                onClick={auth.onDashboardClick}
+                render={auth.onDashboardClick ? undefined : <Link to={auth.dashboard.url} />}
+                nativeButton={auth.onDashboardClick ? true : false}
+              >
+                <LayoutDashboard className="size-4" />
+                {auth.dashboard.title}
+              </Button>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={auth.onLoginClick}
+                  render={auth.onLoginClick ? undefined : <Link to={auth.login.url} />}
+                  nativeButton={auth.onLoginClick ? true : false}
+                >
+                  {auth.login.title}
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={auth.onSignupClick}
+                  render={auth.onSignupClick ? undefined : <Link to={auth.signup.url} />}
+                  nativeButton={auth.onSignupClick ? true : false}
+                >
+                  {auth.signup.title}
+                </Button>
+              </>
+            )}
           </div>
         </nav>
 
@@ -103,13 +123,13 @@ const Navbar1 = ({ logo, menu, auth }: Navbar1Props) => {
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a href={logo.url} className="flex items-center gap-2">
+            <Link to={logo.url} className="flex items-center gap-2">
               <img
                 src={logo.src}
                 className={cn("size-10", logo.className)}
                 alt={logo.alt}
               />
-            </a>
+            </Link>
             <Sheet>
               <SheetTrigger render={<Button variant="outline" size="icon" />}>
                 <Menu className="size-4" />
@@ -117,13 +137,13 @@ const Navbar1 = ({ logo, menu, auth }: Navbar1Props) => {
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href={logo.url} className="flex items-center gap-2">
+                    <Link to={logo.url} className="flex items-center gap-2">
                       <img
                         src={logo.src}
                         className={cn("size-10", logo.className)}
                         alt={logo.alt}
                       />
-                    </a>
+                    </Link>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="flex flex-col gap-6 p-4">
@@ -132,21 +152,34 @@ const Navbar1 = ({ logo, menu, auth }: Navbar1Props) => {
                   </Accordion>
 
                   <div className="flex flex-col gap-3">
-                    <Button
-                      variant="outline"
-                      onClick={auth.onLoginClick}
-                      render={auth.onLoginClick ? undefined : <a href={auth.login.url} />}
-                      nativeButton={auth.onLoginClick ? true : false}
-                    >
-                      {auth.login.title}
-                    </Button>
-                    <Button
-                      onClick={auth.onSignupClick}
-                      render={auth.onSignupClick ? undefined : <a href={auth.signup.url} />}
-                      nativeButton={auth.onSignupClick ? true : false}
-                    >
-                      {auth.signup.title}
-                    </Button>
+                    {auth.dashboard ? (
+                      <Button
+                        onClick={auth.onDashboardClick}
+                        render={auth.onDashboardClick ? undefined : <Link to={auth.dashboard.url} />}
+                        nativeButton={auth.onDashboardClick ? true : false}
+                      >
+                        <LayoutDashboard className="size-4" />
+                        {auth.dashboard.title}
+                      </Button>
+                    ) : (
+                      <>
+                        <Button
+                          variant="outline"
+                          onClick={auth.onLoginClick}
+                          render={auth.onLoginClick ? undefined : <Link to={auth.login.url} />}
+                          nativeButton={auth.onLoginClick ? true : false}
+                        >
+                          {auth.login.title}
+                        </Button>
+                        <Button
+                          onClick={auth.onSignupClick}
+                          render={auth.onSignupClick ? undefined : <Link to={auth.signup.url} />}
+                          nativeButton={auth.onSignupClick ? true : false}
+                        >
+                          {auth.signup.title}
+                        </Button>
+                      </>
+                    )}
                   </div>
                 </div>
               </SheetContent>
@@ -163,7 +196,7 @@ const renderMenuItem = (item: MenuItem) => {
     return (
       <NavigationMenuItem key={item.title}>
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-        <NavigationMenuContent className="bg-popover text-popover-foreground">
+        <NavigationMenuContent className="bg-[#edf1ef] text-[#17332f]">
           {item.items.map((subItem) => (
             <NavigationMenuLink
               key={subItem.title}
@@ -179,7 +212,7 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
-        href={item.url}
+        render={<Link to={item.url} />}
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-accent-foreground"
       >
         {item.title}
@@ -205,17 +238,17 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a key={item.title} href={item.url} className="text-md font-semibold">
+    <Link key={item.title} to={item.url} className="text-md font-semibold">
       {item.title}
-    </a>
+    </Link>
   );
 };
 
 const SubMenuLink = ({ item }: { item: MenuItem }) => {
   return (
-    <a
-      className="flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-muted hover:text-accent-foreground"
-      href={item.url}
+    <Link
+      className="flex min-w-80 flex-row gap-4 rounded-md bg-[#edf1ef] p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-[#dfe6e2] hover:text-[#17332f]"
+      to={item.url}
     >
       <div className="text-foreground">{item.icon}</div>
       <div>
@@ -226,7 +259,7 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => {
           </p>
         )}
       </div>
-    </a>
+    </Link>
   );
 };
 

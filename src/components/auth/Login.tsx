@@ -6,27 +6,75 @@ import {
   Mail,
   UserRound,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { DialogDescription, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "../ui/button";
+import { DialogDescription, DialogTitle } from "../ui/dialog";
+import { useLoginMutation, useRegisterMutation } from "../../redux/auth/auth.api";
 
 export type AuthMode = "login" | "register";
 
 interface LoginProps {
   mode: AuthMode;
   onModeChange: (mode: AuthMode) => void;
+  onAuthSuccess: () => void;
+  notice?: string;
 }
 
-const Login = ({ mode, onModeChange }: LoginProps) => {
+function getErrorMessage(error: unknown, fallback: string) {
+  if (error && typeof error === "object" && "data" in error) {
+    const data = error.data;
+    if (data && typeof data === "object" && "detail" in data) {
+      const detail = data.detail;
+      if (typeof detail === "string") return detail;
+    }
+  }
+  return fallback;
+}
+
+const Login = ({ mode, onModeChange, onAuthSuccess, notice }: LoginProps) => {
   const [message, setMessage] = useState("");
+  const [isError, setIsError] = useState(false);
+  const [login, { isLoading: isLoggingIn }] = useLoginMutation();
+  const [register, { isLoading: isRegisteringAccount }] = useRegisterMutation();
   const isRegistering = mode === "register";
+  const isSubmitting = isLoggingIn || isRegisteringAccount;
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setMessage(
-      "Authentication is not connected yet. Your form is ready for backend integration.",
-    );
+    setMessage("");
+    setIsError(false);
 
-    console.log(event)
+    const formData = new FormData(event.currentTarget);
+    const username = String(formData.get("username") ?? "").trim();
+    const password = String(formData.get("password") ?? "");
+
+    if (isRegistering) {
+      const fullName = String(formData.get("name") ?? "").trim();
+      const [firstname = "", ...lastnameParts] = fullName.split(/\s+/);
+
+      try {
+        await register({
+          username,
+          email: String(formData.get("email") ?? "").trim(),
+          firstname,
+          lastname: lastnameParts.join(" "),
+          password,
+        }).unwrap();
+        setMessage("Account created. Sign in with your username and password.");
+        onModeChange("login");
+      } catch (error) {
+        setIsError(true);
+        setMessage(getErrorMessage(error, "Could not create your account."));
+      }
+      return;
+    }
+
+    try {
+      await login({ username, password }).unwrap();
+      onAuthSuccess();
+    } catch (error) {
+      setIsError(true);
+      setMessage(getErrorMessage(error, "Unable to sign in. Check your credentials."));
+    }
   };
 
   return (
@@ -69,6 +117,7 @@ const Login = ({ mode, onModeChange }: LoginProps) => {
             aria-selected={!isRegistering}
             onClick={() => {
               setMessage("");
+              setIsError(false);
               onModeChange("login");
             }}
             className={`h-9 flex-1 rounded-md px-3 text-sm font-medium transition-colors ${!isRegistering ? "bg-white text-[#163b32] shadow-sm" : "text-[#61716d] hover:text-[#163b32]"}`}
@@ -81,6 +130,7 @@ const Login = ({ mode, onModeChange }: LoginProps) => {
             aria-selected={isRegistering}
             onClick={() => {
               setMessage("");
+              setIsError(false);
               onModeChange("register");
             }}
             className={`h-9 flex-1 rounded-md px-3 text-sm font-medium transition-colors ${isRegistering ? "bg-white text-[#163b32] shadow-sm" : "text-[#61716d] hover:text-[#163b32]"}`}
@@ -98,6 +148,11 @@ const Login = ({ mode, onModeChange }: LoginProps) => {
               ? "Create an account to book and manage your medical rides."
               : "Sign in to continue to your CallNow account."}
           </DialogDescription>
+          {notice && (
+            <p className="mt-3 rounded-md border border-[#b9d7df] bg-[#edf5f8] px-3 py-2 text-sm text-[#23445c]" role="status">
+              {notice}
+            </p>
+          )}
         </div>
 
         <form className="space-y-4" onSubmit={handleSubmit}>
@@ -118,19 +173,37 @@ const Login = ({ mode, onModeChange }: LoginProps) => {
           )}
 
           <label className="block space-y-1.5 text-sm font-medium text-[#273c38]">
-            Email address
+            Username
             <span className="relative block">
-              <Mail className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-[#82918d]" />
+              <UserRound className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-[#82918d]" />
               <input
-                autoComplete="email"
+                autoComplete="username"
                 className="h-11 w-full rounded-md border border-[#d8e1dc] bg-white pr-3 pl-10 text-sm outline-none transition focus:border-[#3e8375] focus:ring-3 focus:ring-[#3e8375]/15"
-                name="email"
-                placeholder="you@example.com"
+                name="username"
+                placeholder="Your username"
                 required
-                type="email"
+                minLength={3}
+                type="text"
               />
             </span>
           </label>
+
+          {isRegistering && (
+            <label className="block space-y-1.5 text-sm font-medium text-[#273c38]">
+              Email address
+              <span className="relative block">
+                <Mail className="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-[#82918d]" />
+                <input
+                  autoComplete="email"
+                  className="h-11 w-full rounded-md border border-[#d8e1dc] bg-white pr-3 pl-10 text-sm outline-none transition focus:border-[#3e8375] focus:ring-3 focus:ring-[#3e8375]/15"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  type="email"
+                />
+              </span>
+            </label>
+          )}
 
           <label className="block space-y-1.5 text-sm font-medium text-[#273c38]">
             Password
@@ -141,9 +214,9 @@ const Login = ({ mode, onModeChange }: LoginProps) => {
                   isRegistering ? "new-password" : "current-password"
                 }
                 className="h-11 w-full rounded-md border border-[#d8e1dc] bg-white pr-3 pl-10 text-sm outline-none transition focus:border-[#3e8375] focus:ring-3 focus:ring-[#3e8375]/15"
-                minLength={8}
+                minLength={6}
                 name="password"
-                placeholder="At least 8 characters"
+                placeholder="At least 6 characters"
                 required
                 type="password"
               />
@@ -152,19 +225,20 @@ const Login = ({ mode, onModeChange }: LoginProps) => {
 
           {message && (
             <p
-              className="rounded-md bg-[#eef5e6] px-3 py-2 text-sm leading-5 text-[#315844]"
-              role="status"
+              className={`rounded-md px-3 py-2 text-sm leading-5 ${isError ? "bg-[#fff0ec] text-[#a33b2b]" : "bg-[#eef5e6] text-[#315844]"}`}
+              role={isError ? "alert" : "status"}
             >
               {message}
             </p>
           )}
 
           <Button
+            disabled={isSubmitting}
             className="h-11 w-full justify-between rounded-md bg-[#1c6256] px-4 text-white hover:bg-[#174f46]"
             type="submit"
           >
-            <span>{isRegistering ? "Create account" : "Sign in"}</span>
-            <ArrowRight className="size-4" />
+            <span>{isSubmitting ? "Please wait..." : isRegistering ? "Create account" : "Sign in"}</span>
+            {!isSubmitting && <ArrowRight className="size-4" />}
           </Button>
         </form>
 

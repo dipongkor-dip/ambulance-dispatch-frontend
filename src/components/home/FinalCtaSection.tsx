@@ -1,4 +1,10 @@
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router";
+import {
+  getAccessToken,
+  getLoginRequiredUrl,
+  PASSENGER_BOOKING_PATH,
+} from "@/lib/authSession";
 import { Button } from "../ui/button";
 
 const FinalCtaSection = () => (
@@ -13,7 +19,15 @@ const FinalCtaSection = () => (
         </h2>
       </div>
       <Button
-        render={<a href="#book" />}
+        render={
+          <Link
+            to={
+              getAccessToken()
+                ? PASSENGER_BOOKING_PATH
+                : getLoginRequiredUrl(PASSENGER_BOOKING_PATH)
+            }
+          />
+        }
         nativeButton={false}
         className="h-auto shrink-0 bg-[#102a43] px-5 py-3.5 text-sm font-semibold text-white hover:bg-[#1b4567]"
       >
