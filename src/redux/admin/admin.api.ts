@@ -1,46 +1,11 @@
 import { baseApi, type ApiEndpointBuilder } from "../baseApi";
-
-interface User {
-  id: number;
-  username: string;
-  email: string;
-  firstname: string;
-  lastname: string;
-  role: string;
-  is_active: boolean;
-  created_at: string;
-}
-
-interface RegisterUser {
-  username: string;
-  email: string;
-  firstname: string;
-  lastname: string;
-  password: string;
-}
-
-interface Ambulance {
-  id: number;
-  ambulance_number: string;
-  ambulance_type: string;
-  model: string | null;
-  capacity: number;
-  status: string;
-  driver_id: number | null;
-  created_at: string;
-}
-
-interface CreateAmbulance {
-  ambulance_number: string;
-  ambulance_type: string;
-  model?: string | null;
-  capacity?: number;
-  driver_id?: number | null;
-}
-
-interface ApiMessage {
-  message: string;
-}
+import type {
+  Ambulance,
+  ApiMessage,
+  CreateAmbulance,
+  RegisterUser,
+  User,
+} from "./admin.interface";
 
 export const adminApi = baseApi.injectEndpoints({
   endpoints: (builder: ApiEndpointBuilder) => ({

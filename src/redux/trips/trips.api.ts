@@ -1,16 +1,5 @@
 import { baseApi, type ApiEndpointBuilder } from "../baseApi";
-
-interface Trip {
-  id: number;
-  request_id: number;
-  passenger_id: number;
-  driver_id: number;
-  ambulance_id: number;
-  status: string;
-  start_time: string | null;
-  end_time: string | null;
-  fare: number;
-}
+import type { Trip } from "./trips.interface";
 
 export const tripsApi = baseApi.injectEndpoints({
   endpoints: (builder: ApiEndpointBuilder) => ({

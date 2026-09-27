@@ -1,49 +1,14 @@
 import { baseApi, type ApiEndpointBuilder } from "../baseApi";
 import { clearAccessToken, setAccessToken } from "../../lib/authSession";
-
-interface ApiMessage {
-  message: string;
-}
-
-interface RegisterUser {
-  username: string;
-  email: string;
-  firstname: string;
-  lastname: string;
-  password: string;
-}
-
-interface LoginCredentials {
-  username: string;
-  password: string;
-}
-
-interface AuthToken {
-  access_token: string;
-  token_type: string;
-}
-
-interface VerifyOtpPayload {
-  email: string;
-  otp: string;
-}
-
-interface UserProfile {
-  id: number;
-  username: string;
-  email: string;
-  firstname: string;
-  lastname: string;
-  role: string;
-  is_active: boolean;
-  created_at: string;
-}
-
-interface UpdateProfilePayload {
-  firstname?: string;
-  lastname?: string;
-  email?: string;
-}
+import type {
+  ApiMessage,
+  AuthToken,
+  LoginCredentials,
+  RegisterUser,
+  UpdateProfilePayload,
+  UserProfile,
+  VerifyOtpPayload,
+} from "./auth.interface";
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder: ApiEndpointBuilder) => ({

@@ -8,7 +8,10 @@ import {
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { DialogDescription, DialogTitle } from "../ui/dialog";
-import { useLoginMutation, useRegisterMutation } from "../../redux/auth/auth.api";
+import {
+  useLoginMutation,
+  useRegisterMutation,
+} from "../../redux/auth/auth.api";
 
 export type AuthMode = "login" | "register";
 
@@ -73,7 +76,9 @@ const Login = ({ mode, onModeChange, onAuthSuccess, notice }: LoginProps) => {
       onAuthSuccess();
     } catch (error) {
       setIsError(true);
-      setMessage(getErrorMessage(error, "Unable to sign in. Check your credentials."));
+      setMessage(
+        getErrorMessage(error, "Unable to sign in. Check your credentials."),
+      );
     }
   };
 
@@ -149,7 +154,10 @@ const Login = ({ mode, onModeChange, onAuthSuccess, notice }: LoginProps) => {
               : "Sign in to continue to your CallNow account."}
           </DialogDescription>
           {notice && (
-            <p className="mt-3 rounded-md border border-[#b9d7df] bg-[#edf5f8] px-3 py-2 text-sm text-[#23445c]" role="status">
+            <p
+              className="mt-3 rounded-md border border-[#b9d7df] bg-[#edf5f8] px-3 py-2 text-sm text-[#23445c]"
+              role="status"
+            >
               {notice}
             </p>
           )}
@@ -237,7 +245,13 @@ const Login = ({ mode, onModeChange, onAuthSuccess, notice }: LoginProps) => {
             className="h-11 w-full justify-between rounded-md bg-[#1c6256] px-4 text-white hover:bg-[#174f46]"
             type="submit"
           >
-            <span>{isSubmitting ? "Please wait..." : isRegistering ? "Create account" : "Sign in"}</span>
+            <span>
+              {isSubmitting
+                ? "Please wait..."
+                : isRegistering
+                  ? "Create account"
+                  : "Sign in"}
+            </span>
             {!isSubmitting && <ArrowRight className="size-4" />}
           </Button>
         </form>

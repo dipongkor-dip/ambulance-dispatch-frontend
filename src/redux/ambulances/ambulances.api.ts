@@ -1,15 +1,5 @@
 import { baseApi, type ApiEndpointBuilder } from "../baseApi";
-
-interface Ambulance {
-  id: number;
-  ambulance_number: string;
-  ambulance_type: string;
-  model: string | null;
-  capacity: number;
-  status: string;
-  driver_id: number | null;
-  created_at: string;
-}
+import type { Ambulance } from "./ambulances.interface";
 
 export const ambulancesApi = baseApi.injectEndpoints({
   endpoints: (builder: ApiEndpointBuilder) => ({
