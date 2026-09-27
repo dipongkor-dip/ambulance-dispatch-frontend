@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-labelledby="callnow-title callnow-desc">
+  <title id="callnow-title">CallNow</title>
+  <desc id="callnow-desc">A professional emergency ambulance emblem</desc>
+  <rect width="40" height="40" rx="11" fill="#123b5d"/>
+  <path d="M20 5.2 32.2 10v9.1c0 7.7-4.9 12.9-12.2 15.7C12.7 32 7.8 26.8 7.8 19.1V10z" fill="#f8fafc"/>
+  <path d="M20 7.5 30 11.4v7.7c0 6.2-3.8 10.5-10 13.1-6.2-2.6-10-6.9-10-13.1v-7.7z" fill="#e9f0f6"/>
+  <path d="M11.1 19.2h11.8l3.1 3v5.1H11.1z" fill="#ef4444"/>
+  <path d="M22.9 19.2h2.3l.8 3h-3.1z" fill="#f8fafc"/>
+  <path d="M14.8 19.2v-2.5h4.1v2.5h2.4v2.4h-2.4v2.5h-2.4v-2.5h-2.4z" fill="#ef4444"/>
+  <circle cx="14.7" cy="27.8" r="1.6" fill="#123b5d"/>
+  <circle cx="23.9" cy="27.8" r="1.6" fill="#123b5d"/>
+  <path d="M11.1 25.1h14.9" stroke="#f8fafc" stroke-width="1.1"/>
+</svg>
