@@ -2,23 +2,26 @@
 
 @keyframes network-progress-slide {
 	0% {
-		transform: translateX(-110%);
-	}
-	50% {
-		transform: translateX(130%);
+		transform: scaleX(0);
 	}
 	100% {
-		transform: translateX(330%);
+		transform: scaleX(1);
 	}
 }
 
 .network-progress-indicator {
-	animation: network-progress-slide 1.15s ease-in-out infinite;
+	transform: scaleX(0);
+	transform-origin: left;
+}
+
+.network-progress-indicator--active {
+	animation: network-progress-slide 1.15s steps(4, end) forwards;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.network-progress-indicator {
-		animation-duration: 2.4s;
+	.network-progress-indicator--active {
+		animation: none;
+		transform: scaleX(1);
 	}
 }
 

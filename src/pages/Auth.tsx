@@ -24,6 +24,7 @@ const Auth = ({
         <Login
           mode={mode}
           onModeChange={onModeChange}
+          onOpenChange={onOpenChange}
           onAuthSuccess={onAuthSuccess}
           notice={notice}
         />

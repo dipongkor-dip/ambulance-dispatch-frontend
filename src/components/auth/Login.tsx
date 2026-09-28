@@ -6,6 +6,7 @@ import {
   Mail,
   UserRound,
 } from "lucide-react";
+import { Link } from "react-router";
 import { Button } from "../ui/button";
 import { DialogDescription, DialogTitle } from "../ui/dialog";
 import {
@@ -18,6 +19,7 @@ export type AuthMode = "login" | "register";
 interface LoginProps {
   mode: AuthMode;
   onModeChange: (mode: AuthMode) => void;
+  onOpenChange: (open: boolean) => void;
   onAuthSuccess: () => void;
   notice?: string;
 }
@@ -33,7 +35,13 @@ function getErrorMessage(error: unknown, fallback: string) {
   return fallback;
 }
 
-const Login = ({ mode, onModeChange, onAuthSuccess, notice }: LoginProps) => {
+const Login = ({
+  mode,
+  onModeChange,
+  onOpenChange,
+  onAuthSuccess,
+  notice,
+}: LoginProps) => {
   const [message, setMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [login, { isLoading: isLoggingIn }] = useLoginMutation();
@@ -230,6 +238,18 @@ const Login = ({ mode, onModeChange, onAuthSuccess, notice }: LoginProps) => {
               />
             </span>
           </label>
+
+          {!isRegistering && (
+            <div className="-mt-2 flex justify-end">
+              <Link
+                to="/forgot-password"
+                onClick={() => onOpenChange(false)}
+                className="text-sm font-medium text-[#1c6256] hover:underline"
+              >
+                Forgot password?
+              </Link>
+            </div>
+          )}
 
           {message && (
             <p

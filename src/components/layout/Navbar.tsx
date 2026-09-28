@@ -10,6 +10,7 @@ import {
   getLoginRequiredUrl,
   PASSENGER_BOOKING_PATH,
 } from "@/lib/authSession";
+import { showSuccessToast } from "@/lib/toast";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -145,6 +146,7 @@ const Navbar = () => {
             setAuthOpen(false);
             setIsAuthenticated(true);
             setAuthNotice("");
+            showSuccessToast("Signed in successfully.");
             navigate(postLoginPath);
           }}
         />

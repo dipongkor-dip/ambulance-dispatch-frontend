@@ -49,11 +49,11 @@ const Footer = () => {
           <div>
             <h2 className="text-sm font-semibold text-white">Reach our team</h2>
             <div className="mt-5 space-y-4 text-sm text-[#b6c8d3]">
-              <p className="flex items-start gap-3"><PhoneCall className="mt-0.5 size-4 shrink-0 text-[#ef6b76]" /><span><span className="block text-xs text-[#91b1bf]">Emergency line</span><a href="tel:911" className="mt-1 block font-semibold text-white hover:text-[#f7a0a7]">Call 911 for immediate danger</a></span></p>
-              <p className="flex items-start gap-3"><Mail className="mt-0.5 size-4 shrink-0 text-[#7ecac0]" /><a href="mailto:support@callnow.health" className="hover:text-white">support@callnow.health</a></p>
+              <p className="flex items-start gap-3"><PhoneCall className="mt-0.5 size-4 shrink-0 text-[#ef6b76]" /><span><span className="block text-xs text-[#91b1bf]">Emergency line</span><Link to="tel:911" className="mt-1 block font-semibold text-white hover:text-[#f7a0a7]">Call 911 for immediate danger</Link></span></p>
+              <p className="flex items-start gap-3"><Mail className="mt-0.5 size-4 shrink-0 text-[#7ecac0]" /><Link to="mailto:support@callnow.health" className="hover:text-white">support@callnow.health</Link></p>
               <p className="flex items-start gap-3"><MapPin className="mt-0.5 size-4 shrink-0 text-[#7ecac0]" /><span>Serving local communities<br />around the clock</span></p>
             </div>
-            <Button render={<a href="tel:911" />} nativeButton={false} className="mt-6 h-auto w-full justify-between bg-[#d62839] px-4 py-3 text-sm font-semibold text-white hover:bg-[#b91f30]">Emergency assistance <ArrowUpRight className="size-4" /></Button>
+            <Button render={<Link to="tel:911" />} nativeButton={false} className="mt-6 h-auto w-full justify-between bg-[#d62839] px-4 py-3 text-sm font-semibold text-white hover:bg-[#b91f30]">Emergency assistance <ArrowUpRight className="size-4" /></Button>
           </div>
         </div>
 

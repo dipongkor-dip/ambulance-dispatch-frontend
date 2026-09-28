@@ -20,6 +20,7 @@ import {
 } from "../ui/sheet";
 import { useLogoutMutation } from "../../redux/auth/auth.api";
 import { DashboardNav, type DashboardRole } from "./DashboardShared";
+import { showSuccessToast } from "@/lib/toast";
 
 export interface DashboardUser {
   username: string;
@@ -57,6 +58,7 @@ export function DashboardShell({
 
   const handleLogout = async () => {
     await logout().unwrap();
+    showSuccessToast("Signed out successfully.");
     navigate("/");
   };
 

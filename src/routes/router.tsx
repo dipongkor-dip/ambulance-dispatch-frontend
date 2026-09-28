@@ -13,6 +13,9 @@ import Blog from "../pages/Blog";
 import Contact from "../pages/Contact";
 import HelpCenter from "../pages/HelpCenter";
 import Home from "../pages/Home";
+import ForgotPassword from "../pages/password-recovery/ForgotPassword";
+import ResetPassword from "../pages/password-recovery/ResetPassword";
+import VerifyResetOtp from "../pages/password-recovery/VerifyResetOtp";
 
 const router = createBrowserRouter([
   {
@@ -34,6 +37,18 @@ const router = createBrowserRouter([
       {
         path: "contact",
         Component: Contact,
+      },
+      {
+        path: "forgot-password",
+        Component: ForgotPassword,
+      },
+      {
+        path: "verify-otp",
+        Component: VerifyResetOtp,
+      },
+      {
+        path: "reset-password",
+        Component: ResetPassword,
       },
     ],
   },
