@@ -31,6 +31,17 @@ export const authApi = baseApi.injectEndpoints({
         return data;
       },
     }),
+    exchangeOAuthCode: builder.mutation<AuthToken, { code: string }>({
+      query: ({ code }) => ({
+        url: "/auth/oauth/exchange",
+        method: "POST",
+        data: { code },
+      }),
+      transformResponse: (data: AuthToken): AuthToken => {
+        setAccessToken(data.access_token);
+        return data;
+      },
+    }),
     sendOTP: builder.mutation<ApiMessage, { email: string }>({
       query: ({ email }: { email: string }) => ({
         url: "/auth/send-otp",
@@ -93,6 +104,7 @@ export const authApi = baseApi.injectEndpoints({
 export const {
   useRegisterMutation,
   useLoginMutation,
+  useExchangeOAuthCodeMutation,
   useSendOTPMutation,
   useVerifyOTPMutation,
   useResetPasswordMutation,

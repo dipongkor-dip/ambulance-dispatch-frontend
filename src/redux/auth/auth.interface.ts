@@ -28,7 +28,7 @@ export interface VerifyOtpPayload {
 export interface UserProfile {
   id: number;
   username: string;
-  email: string;
+  email: string | null;
   firstname: string;
   lastname: string;
   role: string;

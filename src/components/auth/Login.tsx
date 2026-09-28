@@ -13,6 +13,7 @@ import {
   useLoginMutation,
   useRegisterMutation,
 } from "../../redux/auth/auth.api";
+import config from "../../config/venv";
 
 export type AuthMode = "login" | "register";
 
@@ -275,6 +276,34 @@ const Login = ({
             {!isSubmitting && <ArrowRight className="size-4" />}
           </Button>
         </form>
+
+        <div className="my-5 flex items-center gap-3 text-xs text-[#82918d]">
+          <span className="h-px flex-1 bg-[#e2e9e5]" />
+          or continue with
+          <span className="h-px flex-1 bg-[#e2e9e5]" />
+        </div>
+        <div className="grid grid-cols-2 gap-3">
+          <Button
+            type="button"
+            variant="outline"
+            className="h-10 rounded-md border-[#d8e1dc] bg-white text-[#273c38]"
+            onClick={() => window.location.assign(`${config.baseUrl}/auth/google`)}
+          >
+            <span aria-hidden="true" className="text-base leading-none font-bold text-[#4285f4]">
+              G
+            </span>
+            Google
+          </Button>
+          <Button
+            type="button"
+            variant="outline"
+            className="h-10 rounded-md border-[#d8e1dc] bg-white text-[#273c38]"
+            onClick={() => window.location.assign(`${config.baseUrl}/auth/facebook`)}
+          >
+            <span className="text-base leading-none font-bold text-[#1877f2]">f</span>
+            Facebook
+          </Button>
+        </div>
 
         <p className="mt-5 text-center text-xs leading-5 text-[#788782]">
           By continuing, you agree to our terms of service and privacy policy.

@@ -16,6 +16,7 @@ import Home from "../pages/Home";
 import ForgotPassword from "../pages/password-recovery/ForgotPassword";
 import ResetPassword from "../pages/password-recovery/ResetPassword";
 import VerifyResetOtp from "../pages/password-recovery/VerifyResetOtp";
+import OAuthCallback from "../pages/OAuthCallback";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "reset-password",
         Component: ResetPassword,
+      },
+      {
+        path: "oauth/callback",
+        Component: OAuthCallback,
       },
     ],
   },

@@ -57,7 +57,7 @@ export default function DashboardProfile() {
           <div><h2 className="text-sm font-semibold text-[#253b36]">Edit personal information</h2><p className="mt-1 text-xs text-[#84918d]">Username and role are managed by your administrator.</p></div>
           <label className="block text-xs font-medium text-[#64716d]">First name<input name="firstname" required defaultValue={user.firstname} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
           <label className="block text-xs font-medium text-[#64716d]">Last name<input name="lastname" required defaultValue={user.lastname} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
-          <label className="block text-xs font-medium text-[#64716d]">Email address<input name="email" type="email" required defaultValue={user.email} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
+          <label className="block text-xs font-medium text-[#64716d]">Email address<input name="email" type="email" required defaultValue={user.email ?? ""} className="mt-1.5 h-10 w-full rounded-md border border-[#d8e1dc] px-3 text-sm font-normal text-[#253b36]" /></label>
           <Button type="submit" disabled={isSaving} className="h-9 rounded-md bg-[#1c6256] px-4 text-white hover:bg-[#174f46]">{isSaving ? "Saving..." : "Save profile"}</Button>
         </form>
       </div>
