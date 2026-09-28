@@ -196,12 +196,12 @@ const renderMenuItem = (item: MenuItem) => {
     return (
       <NavigationMenuItem key={item.title}>
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-        <NavigationMenuContent className="bg-[#edf1ef] text-[#17332f]">
+        <NavigationMenuContent className="bg-transparent group-data-[viewport=false]/navigation-menu:bg-transparent text-[#17332f]">
           {item.items.map((subItem) => (
             <NavigationMenuLink
               key={subItem.title}
-              className="w-80"
-              render={<SubMenuLink item={subItem} />}
+              className="w-80 bg-transparent p-0 hover:bg-transparent"
+              render={<SubMenuLink item={subItem} desktop />}
             ></NavigationMenuLink>
           ))}
         </NavigationMenuContent>
@@ -244,10 +244,16 @@ const renderMobileMenuItem = (item: MenuItem) => {
   );
 };
 
-const SubMenuLink = ({ item }: { item: MenuItem }) => {
+const SubMenuLink = ({
+  item,
+  desktop = false,
+}: {
+  item: MenuItem;
+  desktop?: boolean;
+}) => {
   return (
     <Link
-      className="flex min-w-80 flex-row gap-4 rounded-md bg-[#edf1ef] p-3 leading-none no-underline transition-colors outline-none select-none hover:bg-[#dfe6e2] hover:text-[#17332f]"
+      className={`flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none ${desktop ? "bg-transparent hover:bg-white/55" : "bg-[#edf1ef] hover:bg-[#dfe6e2]"} hover:text-[#17332f]`}
       to={item.url}
     >
       <div className="text-foreground">{item.icon}</div>
