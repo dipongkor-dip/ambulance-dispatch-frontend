@@ -1,5 +1,5 @@
-import { useGetAllPaymentsQuery } from "@/redux/payments/payments.api";
-import { useGetAllTripsQuery } from "@/redux/trips/trips.api";
+import { useGetAllPaymentsQuery } from "../../../redux/payments/payments.api";
+import { useGetAllTripsQuery } from "../../../redux/trips/trips.api";
 import { EmptyState, SectionHeading, StatusBadge } from "../DashboardShared";
 
 export default function AdminTripsPayments() {

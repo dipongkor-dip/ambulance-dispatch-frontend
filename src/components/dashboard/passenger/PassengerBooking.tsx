@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useCreateRequestMutation } from "@/redux/requests/requests.api";
+import { Button } from "../../../components/ui/button";
+import { useCreateRequestMutation } from "../../../redux/requests/requests.api";
 import { getApiErrorMessage, SectionHeading } from "../DashboardShared";
 
 export default function PassengerBooking() {

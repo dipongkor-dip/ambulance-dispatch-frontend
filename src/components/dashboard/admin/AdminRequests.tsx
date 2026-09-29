@@ -1,4 +1,4 @@
-import { useGetAllRequestsQuery } from "@/redux/requests/requests.api";
+import { useGetAllRequestsQuery } from "../../../redux/requests/requests.api";
 import { EmptyState, SectionHeading, StatusBadge } from "../DashboardShared";
 
 export default function AdminRequests() {

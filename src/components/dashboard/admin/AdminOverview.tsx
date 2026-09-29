@@ -6,11 +6,11 @@ import {
   ClipboardList,
   Users,
 } from "lucide-react";
-import { useGetAdminUsersQuery } from "@/redux/admin/admin.api";
-import { useGetAmbulancesQuery } from "@/redux/ambulances/ambulances.api";
-import { useGetAllPaymentsQuery } from "@/redux/payments/payments.api";
-import { useGetAllRequestsQuery } from "@/redux/requests/requests.api";
-import { useGetAllTripsQuery } from "@/redux/trips/trips.api";
+import { useGetAdminUsersQuery } from "../../../redux/admin/admin.api";
+import { useGetAmbulancesQuery } from "../../../redux/ambulances/ambulances.api";
+import { useGetAllPaymentsQuery } from "../../../redux/payments/payments.api";
+import { useGetAllRequestsQuery } from "../../../redux/requests/requests.api";
+import { useGetAllTripsQuery } from "../../../redux/trips/trips.api";
 import { Metric } from "../DashboardShared";
 
 export default function AdminOverview() {

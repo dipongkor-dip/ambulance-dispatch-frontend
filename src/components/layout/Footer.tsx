@@ -1,12 +1,12 @@
 import { ArrowUpRight, Clock3, Mail, MapPin, PhoneCall } from "lucide-react";
 import { Link } from "react-router";
-import callNowIcon from "@/assets/callnow.svg";
+import callNowIcon from "../../assets/callnow.svg";
 import {
   getAccessToken,
   getLoginRequiredUrl,
   PASSENGER_BOOKING_PATH,
 } from "@/lib/authSession";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 
 const Footer = () => {
   const bookingPath = getAccessToken()

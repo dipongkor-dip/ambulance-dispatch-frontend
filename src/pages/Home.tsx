@@ -1,8 +1,8 @@
-import { BookingSection } from "@/components/home/BookingSection";
-import { FinalCtaSection } from "@/components/home/FinalCtaSection";
-import { HeroSection } from "@/components/home/HeroSection";
-import { HowItWorksSection } from "@/components/home/HowItWorksSection";
-import { TrustSection } from "@/components/home/TrustSection";
+import { BookingSection } from "../components/home/BookingSection";
+import { FinalCtaSection } from "../components/home/FinalCtaSection";
+import { HeroSection } from "../components/home/HeroSection";
+import { HowItWorksSection } from "../components/home/HowItWorksSection";
+import { TrustSection } from "../components/home/TrustSection";
 
 const Home = () => {
   return (

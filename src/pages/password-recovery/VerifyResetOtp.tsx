@@ -1,11 +1,11 @@
 import { useState, type FormEvent } from "react";
 import { ArrowRight, KeyRound } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../components/ui/button";
 import {
   useSendOTPMutation,
   useVerifyOTPMutation,
-} from "@/redux/auth/auth.api";
+} from "../../redux/auth/auth.api";
 import RecoveryLayout, {
   getErrorMessage,
   inputClassName,

@@ -1,5 +1,5 @@
-import Login, { type AuthMode } from "@/components/auth/Login";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import Login, { type AuthMode } from "../components/auth/Login";
+import { Dialog, DialogContent } from "../components/ui/dialog";
 
 interface AuthProps {
   open: boolean;

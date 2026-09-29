@@ -1,13 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { Ambulance, Pencil, Plus, Trash2 } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   useCreateAmbulanceMutation,
   useDeleteAmbulanceMutation,
   useGetDriversQuery,
   useUpdateAmbulanceMutation,
-} from "@/redux/admin/admin.api";
-import { useGetAmbulancesQuery } from "@/redux/ambulances/ambulances.api";
+} from "../../../redux/admin/admin.api";
+import { useGetAmbulancesQuery } from "../../../redux/ambulances/ambulances.api";
 import { getApiErrorMessage, SectionHeading, StatusBadge } from "../DashboardShared";
 
 interface AmbulancePayload {

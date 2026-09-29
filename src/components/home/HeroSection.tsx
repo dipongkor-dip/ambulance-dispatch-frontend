@@ -13,7 +13,7 @@ import {
   getAccessToken,
   getLoginRequiredUrl,
   PASSENGER_BOOKING_PATH,
-} from "@/lib/authSession";
+} from "../../lib/authSession";
 
 const HeroSection = () => {
   const [showResponseSteps, setShowResponseSteps] = useState(false);

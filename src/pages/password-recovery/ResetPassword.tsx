@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router";
-import { Button } from "@/components/ui/button";
-import { showSuccessToast } from "@/lib/toast";
-import { useResetPasswordMutation } from "@/redux/auth/auth.api";
+import { Button } from "../../components/ui/button";
+import { showSuccessToast } from "../../lib/toast";
+import { useResetPasswordMutation } from "../../redux/auth/auth.api";
 import RecoveryLayout, {
   getErrorMessage,
   inputClassName,

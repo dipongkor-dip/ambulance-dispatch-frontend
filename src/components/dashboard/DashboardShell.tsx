@@ -20,7 +20,7 @@ import {
 } from "../ui/sheet";
 import { useLogoutMutation } from "../../redux/auth/auth.api";
 import { DashboardNav, type DashboardRole } from "./DashboardShared";
-import { showSuccessToast } from "@/lib/toast";
+import { showSuccessToast } from "../../lib/toast";
 
 export interface DashboardUser {
   username: string;

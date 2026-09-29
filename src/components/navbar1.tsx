@@ -9,8 +9,8 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
+} from "../components/ui/accordion";
+import { Button } from "../components/ui/button";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -18,14 +18,14 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
+} from "../components/ui/navigation-menu";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
+} from "../components/ui/sheet";
 interface MenuItem {
   title: string;
   url: string;

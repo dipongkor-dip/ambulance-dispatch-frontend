@@ -1,9 +1,9 @@
 import { useState, type FormEvent } from "react";
 import { ArrowLeft, ArrowRight, Mail } from "lucide-react";
 import { Link, Navigate, useNavigate } from "react-router";
-import { Button } from "@/components/ui/button";
-import { getAccessToken } from "@/lib/authSession";
-import { useSendOTPMutation } from "@/redux/auth/auth.api";
+import { Button } from "../../components/ui/button";
+import { getAccessToken } from "../../lib/authSession";
+import { useSendOTPMutation } from "../../redux/auth/auth.api";
 import RecoveryLayout, {
   getErrorMessage,
   inputClassName,

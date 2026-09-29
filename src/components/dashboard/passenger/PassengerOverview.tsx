@@ -1,7 +1,7 @@
 import { Activity, Ambulance, ClipboardList } from "lucide-react";
-import { useGetAmbulancesQuery } from "@/redux/ambulances/ambulances.api";
-import { useGetMyRequestsQuery } from "@/redux/requests/requests.api";
-import { useGetMyTripsQuery } from "@/redux/trips/trips.api";
+import { useGetAmbulancesQuery } from "../../../redux/ambulances/ambulances.api";
+import { useGetMyRequestsQuery } from "../../../redux/requests/requests.api";
+import { useGetMyTripsQuery } from "../../../redux/trips/trips.api";
 import { Metric } from "../DashboardShared";
 
 export default function PassengerOverview() {

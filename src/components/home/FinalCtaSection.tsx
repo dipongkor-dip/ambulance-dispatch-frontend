@@ -4,7 +4,7 @@ import {
   getAccessToken,
   getLoginRequiredUrl,
   PASSENGER_BOOKING_PATH,
-} from "@/lib/authSession";
+} from "../../lib/authSession";
 import { Button } from "../ui/button";
 
 const FinalCtaSection = () => (

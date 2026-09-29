@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import {
   useCreateAdminMutation,
   useCreateDriverMutation,
@@ -7,7 +7,7 @@ import {
   useGetAdminUserQuery,
   useGetAdminUsersQuery,
   useGetDriversQuery,
-} from "@/redux/admin/admin.api";
+} from "../../../redux/admin/admin.api";
 import { EmptyState, getApiErrorMessage, SectionHeading, StatusBadge } from "../DashboardShared";
 
 interface NewUserPayload {

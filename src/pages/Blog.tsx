@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { ArrowRight, BookOpen, Clock3, Search } from "lucide-react";
-import heroImage from "@/assets/hero.png";
+import heroImage from "../assets/hero.png";
 
 const categories = ["All stories", "Patient guidance", "On the road", "For partners"];
 

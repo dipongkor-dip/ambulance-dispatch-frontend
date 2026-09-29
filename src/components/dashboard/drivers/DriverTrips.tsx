@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { useCompleteTripMutation, useGetDriverTripsQuery, useStartTripMutation, useUpdateTripFareMutation } from "@/redux/trips/trips.api";
 import { EmptyState, getApiErrorMessage, SectionHeading, StatusBadge } from "../DashboardShared";
 

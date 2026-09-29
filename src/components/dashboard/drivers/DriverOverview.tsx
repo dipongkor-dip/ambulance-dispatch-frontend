@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Activity, ClipboardList, Truck } from "lucide-react";
 import { useGetMyAmbulanceQuery, useUpdateMyAmbulanceStatusMutation } from "@/redux/ambulances/ambulances.api";
-import { useGetPendingRequestsQuery } from "@/redux/requests/requests.api";
-import { useGetDriverTripsQuery } from "@/redux/trips/trips.api";
+import { useGetPendingRequestsQuery } from "../../../redux/requests/requests.api";
+import { useGetDriverTripsQuery } from "../../../redux/trips/trips.api";
 import { getApiErrorMessage, Metric } from "../DashboardShared";
 
 export default function DriverOverview() {

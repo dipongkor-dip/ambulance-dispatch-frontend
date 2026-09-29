@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Check, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useGetMyAmbulanceQuery } from "@/redux/ambulances/ambulances.api";
+import { Button } from "../../../components/ui/button";
+import { useGetMyAmbulanceQuery } from "../../../redux/ambulances/ambulances.api";
 import { useAcceptRequestMutation, useGetPendingRequestsQuery, useRejectRequestMutation } from "@/redux/requests/requests.api";
 import { EmptyState, getApiErrorMessage, SectionHeading } from "../DashboardShared";
 

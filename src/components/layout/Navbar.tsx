@@ -3,13 +3,13 @@ import { useNavigate, useSearchParams } from "react-router";
 import { Navbar1 } from "../navbar1";
 import Auth from "../../pages/Auth";
 import type { AuthMode } from "../auth/Login";
-import callNowIcon from "@/assets/callnow.svg";
+import callNowIcon from "../../assets/callnow.svg";
 import { Ambulance, Book, MapPin, PhoneCall, Zap } from "lucide-react";
 import {
   getAccessToken,
   getLoginRequiredUrl,
   PASSENGER_BOOKING_PATH,
-} from "@/lib/authSession";
+} from "../../lib/authSession";
 import { showSuccessToast } from "@/lib/toast";
 
 const Navbar = () => {

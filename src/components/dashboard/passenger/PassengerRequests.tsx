@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { useCancelRequestMutation, useGetMyRequestQuery, useGetMyRequestsQuery } from "@/redux/requests/requests.api";
 import { EmptyState, getApiErrorMessage, SectionHeading, StatusBadge } from "../DashboardShared";
 

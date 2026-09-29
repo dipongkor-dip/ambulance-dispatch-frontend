@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Banknote } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { useCreatePaymentMutation } from "@/redux/payments/payments.api";
 import { useGetMyTripQuery, useGetMyTripsQuery } from "@/redux/trips/trips.api";
 import { EmptyState, getApiErrorMessage, SectionHeading, StatusBadge } from "../DashboardShared";

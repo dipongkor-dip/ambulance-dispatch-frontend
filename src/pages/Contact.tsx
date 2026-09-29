@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { ArrowUpRight, Mail, MapPin, PhoneCall } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "../components/ui/button";
 
 const SUPPORT_EMAIL = "support@callnow.health";
 
