@@ -287,7 +287,7 @@ const Login = ({
             type="button"
             variant="outline"
             className="h-10 rounded-md border-[#d8e1dc] bg-white text-[#273c38]"
-            onClick={() => window.location.assign(`${config.googleAuthUrl}/auth/google`)}
+            onClick={() => window.location.assign(`${config.baseUrl}/auth/google`)}
           >
             <span aria-hidden="true" className="text-base leading-none font-bold text-[#4285f4]">
               G
