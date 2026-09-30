@@ -11,7 +11,7 @@ const BookingSection = () => (
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#d62839]">
           Start a request
         </p>
-        <h2 className="mt-3 max-w-sm text-3xl font-semibold leading-tight tracking-[-0.035em] text-[#102a43]">
+        <h2 className="mt-3 max-w-sm text-3xl font-semibold leading-tight tracking-[-0.035em] text-[#102a43] sm:text-4xl">
           Get the right care moving.
         </h2>
         <p className="mt-4 max-w-sm leading-7 text-[#647b8b]">

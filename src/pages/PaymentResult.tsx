@@ -70,7 +70,7 @@ const PaymentResult = () => {
             <p className={`mt-5 text-xs font-semibold tracking-[0.14em] uppercase ${result.color}`}>
               {result.label}
             </p>
-            <h1 className="mt-2 text-2xl font-semibold text-[#17332f]">
+            <h1 className="mt-2 text-2xl font-semibold text-[#102a43]">
               {result.title}
             </h1>
             <p className="mt-3 text-sm leading-6 text-[#61716d]">
@@ -111,7 +111,7 @@ const PaymentResult = () => {
           </>
         ) : (
           <>
-            <h1 className="text-2xl font-semibold text-[#17332f]">
+            <h1 className="text-2xl font-semibold text-[#102a43]">
               {isLoading ? "Loading payment details" : "Payment details unavailable"}
             </h1>
             <p

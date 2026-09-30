@@ -26,7 +26,7 @@ export default function DashboardProfile() {
   };
 
   if (isLoading || !user) {
-    return <div className="py-10 text-sm text-[#71807b]">Loading profile...</div>;
+    return <div className="py-10 text-sm text-[#647b8b]">Loading profile...</div>;
   }
 
   const fullName = [user.firstname, user.lastname].filter(Boolean).join(" ") || user.username;
@@ -37,10 +37,10 @@ export default function DashboardProfile() {
       {feedback && <p className="rounded-md border border-[#dce9e2] bg-white px-4 py-3 text-sm text-[#315844]" role="status">{feedback}</p>}
 
       <div className="flex flex-wrap items-center gap-4 border-b border-[#dfe8e3] pb-6">
-        <span className="flex size-14 items-center justify-center rounded-full bg-[#e5f4ee] text-[#26725c]"><UserRound className="size-6" /></span>
+        <span className="flex size-14 items-center justify-center rounded-full bg-[#e3f1ef] text-[#176b78]"><UserRound className="size-6" /></span>
         <div className="min-w-0 flex-1">
-          <h1 className="truncate text-xl font-semibold text-[#17332f]">{fullName}</h1>
-          <p className="mt-1 text-sm text-[#71807b]">@{user.username}</p>
+          <h1 className="truncate text-xl font-semibold text-[#102a43]">{fullName}</h1>
+          <p className="mt-1 text-sm text-[#647b8b]">@{user.username}</p>
         </div>
         <StatusBadge status={user.is_active ? "active" : "inactive"} />
       </div>

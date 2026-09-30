@@ -25,9 +25,9 @@ export default function DriverOverview() {
   return (
     <section>
       <div className="mb-6">
-        <p className="text-sm font-medium text-[#668078]">Driver workspace</p>
-        <h1 className="mt-1 text-2xl font-semibold text-[#17332f] sm:text-3xl">Good to have you on shift.</h1>
-        <p className="mt-2 text-sm text-[#71807b]">Review calls, manage your trips, and keep your unit ready.</p>
+        <p className="text-sm font-medium text-[#176b78]">Driver workspace</p>
+        <h1 className="mt-1 text-2xl font-semibold text-[#102a43] sm:text-3xl">Good to have you on shift.</h1>
+        <p className="mt-2 text-sm text-[#647b8b]">Review calls, manage your trips, and keep your unit ready.</p>
       </div>
       <div className="grid gap-3 sm:grid-cols-3">
         <Metric label="Dispatch queue" value={requests.length} detail="Requests waiting for a driver" icon={ClipboardList} tone="orange" />

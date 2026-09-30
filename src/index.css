@@ -1,4 +1,59 @@
 @import "tailwindcss";
+@import "@fontsource-variable/geist";
+
+@theme {
+	--font-sans: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+	--font-heading: "Geist Variable", "Geist", ui-sans-serif, system-ui, sans-serif;
+	--color-background: #f6f9fb;
+	--color-foreground: #102a43;
+	--color-card: #ffffff;
+	--color-card-foreground: #102a43;
+	--color-popover: #ffffff;
+	--color-popover-foreground: #102a43;
+	--color-primary: #176b78;
+	--color-primary-foreground: #ffffff;
+	--color-secondary: #e3f1ef;
+	--color-secondary-foreground: #176b78;
+	--color-muted: #eef4f6;
+	--color-muted-foreground: #647b8b;
+	--color-accent: #e3f1ef;
+	--color-accent-foreground: #102a43;
+	--color-destructive: #d62839;
+	--color-border: #d9e5ec;
+	--color-input: #cbd9df;
+	--color-ring: #208478;
+	--color-sidebar: #102a43;
+	--color-sidebar-foreground: #ffffff;
+	--color-sidebar-primary: #e3f1ef;
+	--color-sidebar-accent: #ffffff1a;
+	--color-sidebar-border: #ffffff1a;
+	--color-sidebar-ring: #208478;
+}
+
+html {
+	font-family: var(--font-sans);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	min-width: 320px;
+	margin: 0;
+	background: #f6f9fb;
+	color: #102a43;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+}
+
+::selection {
+	background: #cde8e5;
+	color: #102a43;
+}
 
 @keyframes network-progress-slide {
 	0% {

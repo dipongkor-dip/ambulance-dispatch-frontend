@@ -84,7 +84,7 @@ export function DashboardNav({
             aria-current={isActive ? "page" : undefined}
             className={`flex h-10 items-center gap-3 rounded-md px-3 text-sm font-medium transition-colors ${
               isActive
-                ? "bg-[#d8f273] text-[#153b34]"
+                ? "bg-[#e3f1ef] text-[#176b78]"
                 : "text-white/70 hover:bg-white/10 hover:text-white"
             }`}
           >
@@ -117,18 +117,18 @@ export function Metric({
   tone?: "green" | "blue" | "orange" | "lime";
 }) {
   const tones = {
-    green: "bg-[#e5f4ee] text-[#26725c]",
+    green: "bg-[#e3f1ef] text-[#176b78]",
     blue: "bg-[#e8f0f8] text-[#426b91]",
     orange: "bg-[#fff0e6] text-[#b76535]",
-    lime: "bg-[#f0f5d9] text-[#657923]",
+    lime: "bg-[#e3f1ef] text-[#176b78]",
   };
 
   return (
-    <article className="rounded-lg border border-[#e3eae6] bg-white p-5 shadow-[0_2px_10px_rgba(23,51,47,0.025)]">
+    <article className="rounded-lg border border-[#d9e5ec] bg-white p-5 shadow-[0_2px_10px_rgba(16,42,67,0.04)]">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="text-sm font-medium text-[#687773]">{label}</p>
-          <p className="mt-3 text-3xl leading-none font-semibold tracking-normal text-[#17332f]">
+          <p className="text-sm font-medium text-[#647b8b]">{label}</p>
+          <p className="mt-3 text-3xl leading-none font-semibold tracking-normal text-[#102a43]">
             {value}
           </p>
         </div>
@@ -138,7 +138,7 @@ export function Metric({
           <Icon className="size-5" aria-hidden="true" />
         </span>
       </div>
-      <p className="mt-4 text-xs text-[#84918d]">{detail}</p>
+      <p className="mt-4 text-xs text-[#78909c]">{detail}</p>
     </article>
   );
 }
@@ -155,10 +155,10 @@ export function SectionHeading({
   return (
     <div className="mb-4 flex flex-wrap items-end justify-between gap-3">
       <div>
-        <p className="text-[11px] font-semibold tracking-[0.12em] text-[#668078] uppercase">
+        <p className="text-[11px] font-semibold tracking-[0.12em] text-[#176b78] uppercase">
           {eyebrow}
         </p>
-        <h2 className="mt-1 text-lg font-semibold text-[#17332f]">{title}</h2>
+        <h2 className="mt-1 text-lg font-semibold text-[#102a43]">{title}</h2>
       </div>
       {action}
     </div>
@@ -170,10 +170,10 @@ export function StatusBadge({ status }: { status: string }) {
   const tone = ["completed", "available", "success", "accepted"].includes(
     normalized,
   )
-    ? "bg-[#e7f4ed] text-[#26725c]"
+    ? "bg-[#e3f1ef] text-[#176b78]"
     : ["pending", "ongoing", "busy"].includes(normalized)
       ? "bg-[#fff1df] text-[#a96327]"
-      : "bg-[#eef1ef] text-[#64716d]";
+      : "bg-[#eef4f6] text-[#647b8b]";
 
   return (
     <span
@@ -186,7 +186,7 @@ export function StatusBadge({ status }: { status: string }) {
 
 export function EmptyState({ children }: { children: ReactNode }) {
   return (
-    <div className="px-5 py-10 text-center text-sm text-[#788782]">
+    <div className="px-5 py-10 text-center text-sm text-[#647b8b]">
       {children}
     </div>
   );
@@ -196,7 +196,7 @@ function SkeletonBlock({ className }: { className: string }) {
   return (
     <div
       aria-hidden="true"
-      className={`animate-pulse rounded-md bg-[#e3ebe7] ${className}`}
+      className={`animate-pulse rounded-md bg-[#e4edf0] ${className}`}
     />
   );
 }
@@ -204,11 +204,11 @@ function SkeletonBlock({ className }: { className: string }) {
 export function DashboardLoadingSkeleton() {
   return (
     <div
-      className="min-h-screen bg-[#f3f7f5]"
+      className="min-h-screen bg-[#f6f9fb]"
       aria-busy="true"
       aria-label="Loading dashboard"
     >
-      <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col gap-8 bg-[#123f3b] px-6 py-6 lg:flex">
+      <aside className="fixed inset-y-0 left-0 hidden w-64 flex-col gap-8 bg-[#102a43] px-6 py-6 lg:flex">
         <SkeletonBlock className="h-10 w-36 bg-white/15" />
         <div className="space-y-3">
           <SkeletonBlock className="h-3 w-20 bg-white/10" />
@@ -220,7 +220,7 @@ export function DashboardLoadingSkeleton() {
       </aside>
 
       <div className="lg:pl-64">
-        <header className="flex h-16 items-center justify-between border-b border-[#e0e9e4] bg-white px-4 sm:px-7 lg:px-9">
+        <header className="flex h-16 items-center justify-between border-b border-[#d9e5ec] bg-white px-4 sm:px-7 lg:px-9">
           <SkeletonBlock className="h-8 w-36" />
           <SkeletonBlock className="h-9 w-32 rounded-full" />
         </header>
@@ -231,7 +231,7 @@ export function DashboardLoadingSkeleton() {
             {Array.from({ length: 4 }, (_, index) => (
               <div
                 key={index}
-                className="rounded-lg border border-[#e3eae6] bg-white p-5"
+                className="rounded-lg border border-[#d9e5ec] bg-white p-5"
               >
                 <SkeletonBlock className="h-4 w-28" />
                 <SkeletonBlock className="mt-4 h-8 w-16" />
@@ -244,11 +244,11 @@ export function DashboardLoadingSkeleton() {
               <SkeletonBlock className="h-3 w-24" />
               <SkeletonBlock className="mt-2 h-6 w-48" />
             </div>
-            <div className="overflow-hidden rounded-lg border border-[#e3eae6] bg-white">
+            <div className="overflow-hidden rounded-lg border border-[#d9e5ec] bg-white">
               {Array.from({ length: 4 }, (_, index) => (
                 <div
                   key={index}
-                  className="flex items-center justify-between gap-4 border-b border-[#edf1ef] px-5 py-4 last:border-0"
+                  className="flex items-center justify-between gap-4 border-b border-[#edf2f4] px-5 py-4 last:border-0"
                 >
                   <div className="min-w-0 flex-1">
                     <SkeletonBlock className="h-4 w-2/5" />

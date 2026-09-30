@@ -64,6 +64,12 @@ const Navbar = () => {
           url: bookingUrl,
         },
         {
+          title: "View all ambulances",
+          description: "Browse vehicle types and current availability",
+          icon: <Ambulance className="size-5 shrink-0" />,
+          url: "/ambulances",
+        },
+        {
           title: "How dispatch works",
           description: "See what happens from request to arrival",
           icon: <MapPin className="size-5 shrink-0" />,

@@ -10,6 +10,7 @@ import {
 import Layout from "../components/layout/Layout";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import Blog from "../pages/Blog";
+import Ambulances from "../pages/Ambulances";
 import Contact from "../pages/Contact";
 import HelpCenter from "../pages/HelpCenter";
 import Home from "../pages/Home";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "blog",
         Component: Blog,
+      },
+      {
+        path: "ambulances",
+        Component: Ambulances,
       },
       {
         path: "help",

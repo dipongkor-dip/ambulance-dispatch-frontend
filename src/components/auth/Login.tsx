@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from "react";
 import {
   ArrowRight,
-  HeartPulse,
   LockKeyhole,
   Mail,
   UserRound,
 } from "lucide-react";
 import { Link } from "react-router";
+import callNowIcon from "../../assets/callnow.svg";
 import { Button } from "../ui/button";
 import { DialogDescription, DialogTitle } from "../ui/dialog";
 import {
@@ -93,13 +93,11 @@ const Login = ({
 
   return (
     <div className="grid md:grid-cols-[0.85fr_1.15fr]">
-      <aside className="relative hidden min-h-[520px] flex-col justify-between overflow-hidden bg-[#123f3b] p-9 text-white md:flex">
+      <aside className="relative hidden min-h-[520px] flex-col justify-between overflow-hidden bg-[#102a43] p-9 text-white md:flex">
         <div className="absolute -right-20 -bottom-16 size-72 rounded-full border border-white/10" />
         <div className="absolute -right-8 -bottom-4 size-48 rounded-full border border-white/10" />
         <div className="relative flex items-center gap-3">
-          <span className="flex size-10 items-center justify-center rounded-lg bg-[#d4f26a] text-[#163b32]">
-            <HeartPulse className="size-5" />
-          </span>
+          <img src={callNowIcon} alt="" className="size-10 rounded-lg" />
           <span className="text-sm font-semibold tracking-wide">CALLNOW</span>
         </div>
         <div className="relative max-w-xs">
@@ -154,7 +152,7 @@ const Login = ({
         </div>
 
         <div className="mb-6">
-          <DialogTitle className="text-2xl tracking-normal text-[#17332f]">
+          <DialogTitle className="text-2xl tracking-normal text-[#102a43]">
             {isRegistering ? "Join CallNow" : "Welcome back"}
           </DialogTitle>
           <DialogDescription className="mt-2 leading-5">

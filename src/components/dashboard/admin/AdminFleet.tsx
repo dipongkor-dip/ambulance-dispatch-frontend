@@ -9,6 +9,9 @@ import {
 } from "../../../redux/admin/admin.api";
 import { useGetAmbulancesQuery } from "../../../redux/ambulances/ambulances.api";
 import { getApiErrorMessage, SectionHeading, StatusBadge } from "../DashboardShared";
+import { PaginationControls } from "../../ui/pagination";
+
+const PAGE_SIZE = 6;
 
 interface AmbulancePayload {
   ambulance_number: string;
@@ -21,7 +24,12 @@ interface AmbulancePayload {
 export default function AdminFleet() {
   const [feedback, setFeedback] = useState("");
   const [editingAmbulanceId, setEditingAmbulanceId] = useState<number | null>(null);
-  const { data: ambulances = [] } = useGetAmbulancesQuery();
+  const [page, setPage] = useState(1);
+  const { currentData: ambulancePage, isFetching } = useGetAmbulancesQuery({
+    page,
+    page_size: PAGE_SIZE,
+  });
+  const ambulances = ambulancePage?.items ?? [];
   const { data: drivers = [] } = useGetDriversQuery();
   const [createAmbulance, { isLoading: isCreating }] = useCreateAmbulanceMutation();
   const [updateAmbulance, { isLoading: isUpdating }] = useUpdateAmbulanceMutation();
@@ -48,6 +56,7 @@ export default function AdminFleet() {
       } else {
         await createAmbulance(payload).unwrap();
         setFeedback("Ambulance added to the fleet.");
+        setPage(1);
         form.reset();
       }
     } catch (error) {
@@ -60,6 +69,7 @@ export default function AdminFleet() {
     try {
       await deleteAmbulance(unitId).unwrap();
       setFeedback("Ambulance deleted.");
+      if (ambulances.length === 1 && page > 1) setPage(page - 1);
     } catch (error) {
       setFeedback(getApiErrorMessage(error, "Could not delete this ambulance."));
     }
@@ -75,8 +85,8 @@ export default function AdminFleet() {
         {ambulances.map((unit) => (
           <article key={unit.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-[#e3eae6] bg-white p-4">
             <div className="flex min-w-0 items-center gap-3">
-              <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#e5f4ee] text-[#26725c]"><Ambulance className="size-5" /></span>
-              <div className="min-w-0"><p className="truncate text-sm font-semibold text-[#253b36]">{unit.ambulance_number}</p><p className="mt-1 truncate text-xs capitalize text-[#83908b]">{unit.ambulance_type} · {unit.model ?? "No model"}</p></div>
+              <span className="flex size-10 shrink-0 items-center justify-center rounded-md bg-[#e3f1ef] text-[#176b78]"><Ambulance className="size-5" /></span>
+              <div className="min-w-0"><p className="truncate text-sm font-semibold text-[#102a43]">{unit.ambulance_number}</p><p className="mt-1 truncate text-xs capitalize text-[#647b8b]">{unit.ambulance_type} · {unit.model ?? "No model"}</p></div>
             </div>
             <div className="flex items-center gap-2">
               <StatusBadge status={unit.status} />
@@ -85,8 +95,20 @@ export default function AdminFleet() {
             </div>
           </article>
         ))}
-        {ambulances.length === 0 && <div className="col-span-full rounded-lg border border-dashed border-[#d8e2dd] bg-white px-5 py-8 text-center text-sm text-[#788782]">No fleet units registered.</div>}
+        {ambulancePage?.total === 0 && <div className="col-span-full rounded-lg border border-dashed border-[#d8e2dd] bg-white px-5 py-8 text-center text-sm text-[#788782]">No fleet units registered.</div>}
       </div>
+      {isFetching && !ambulancePage && (
+        <p className="py-6 text-center text-sm text-[#647b8b]" role="status">
+          Loading fleet units...
+        </p>
+      )}
+      <PaginationControls
+        page={page}
+        pageCount={ambulancePage?.pages ?? 0}
+        pageSize={PAGE_SIZE}
+        total={ambulancePage?.total ?? 0}
+        onPageChange={setPage}
+      />
 
       <form key={editingAmbulanceId ?? "new-ambulance"} onSubmit={submitAmbulance} className="mt-5 rounded-lg border border-[#e3eae6] bg-white p-5">
         <h3 className="text-sm font-semibold text-[#253b36]">{editingUnit ? `Edit ${editingUnit.ambulance_number}` : "Add ambulance"}</h3>

@@ -30,7 +30,7 @@ const TrustSection = () => (
       <div className="flex size-12 items-center justify-center rounded-2xl bg-[#d62839]">
         <ShieldCheck className="size-6" />
       </div>
-      <h3 className="mt-8 text-2xl font-semibold tracking-tight">
+      <h3 className="mt-8 text-xl font-semibold tracking-tight sm:text-2xl">
         A network you can trust.
       </h3>
       <p className="mt-3 leading-7 text-[#b6c8d3]">

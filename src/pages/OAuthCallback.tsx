@@ -35,7 +35,7 @@ const OAuthCallback = () => {
   return (
     <main className="flex min-h-[60vh] items-center justify-center px-6 py-16">
       <section className="w-full max-w-sm text-center">
-        <h1 className="text-xl font-semibold text-[#17332f]">
+        <h1 className="text-xl font-semibold text-[#102a43]">
           {displayedError ? "Sign-in failed" : "Signing you in"}
         </h1>
         <p

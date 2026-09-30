@@ -63,8 +63,8 @@ interface Navbar1Props {
 
 const Navbar1 = ({ logo, menu, auth }: Navbar1Props) => {
   return (
-    <section className={cn("py-4")}>
-      <div className="container mx-auto">
+    <section className={cn("border-b border-[#d9e5ec] bg-white/95 py-3 backdrop-blur")}>
+      <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         {/* Desktop Menu */}
         <nav className="hidden items-center justify-between lg:flex">
           <div className="flex items-center gap-6">
@@ -196,7 +196,7 @@ const renderMenuItem = (item: MenuItem) => {
     return (
       <NavigationMenuItem key={item.title}>
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
-        <NavigationMenuContent className="bg-transparent group-data-[viewport=false]/navigation-menu:bg-transparent text-[#17332f]">
+        <NavigationMenuContent className="bg-transparent text-[#102a43] group-data-[viewport=false]/navigation-menu:bg-transparent">
           {item.items.map((subItem) => (
             <NavigationMenuLink
               key={subItem.title}
@@ -253,7 +253,7 @@ const SubMenuLink = ({
 }) => {
   return (
     <Link
-      className={`flex min-w-80 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none ${desktop ? "bg-transparent hover:bg-white/55" : "bg-[#edf1ef] hover:bg-[#dfe6e2]"} hover:text-[#17332f]`}
+      className={`flex w-full min-w-0 flex-row gap-4 rounded-md p-3 leading-none no-underline transition-colors outline-none select-none ${desktop ? "bg-transparent hover:bg-white/55 lg:min-w-80" : "bg-[#f1f7f8] hover:bg-[#e3f1ef]"} hover:text-[#102a43]`}
       to={item.url}
     >
       <div className="text-foreground">{item.icon}</div>

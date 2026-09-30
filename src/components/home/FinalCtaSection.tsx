@@ -14,7 +14,7 @@ const FinalCtaSection = () => (
         <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#176b78]">
           Ready when you are
         </p>
-        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#102a43]">
+        <h2 className="mt-2 text-2xl font-semibold tracking-tight text-[#102a43] sm:text-3xl">
           Make your next step a little easier.
         </h2>
       </div>
