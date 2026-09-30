@@ -4,8 +4,11 @@ import type {
   ApiMessage,
   AuthToken,
   LoginCredentials,
+  PasswordStatus,
   RegisterUser,
+  SetPasswordPayload,
   UpdateProfilePayload,
+  UsernameAvailability,
   UserProfile,
   VerifyOtpPayload,
 } from "./auth.interface";
@@ -75,10 +78,30 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         params,
       }),
+      invalidatesTags: ["USER"],
+    }),
+    getPasswordStatus: builder.query<PasswordStatus, void>({
+      query: () => ({ url: "/auth/password-status" }),
+      providesTags: ["USER"],
+    }),
+    setPassword: builder.mutation<ApiMessage, SetPasswordPayload>({
+      query: (data) => ({
+        url: "/auth/set-password",
+        method: "POST",
+        data,
+      }),
+      invalidatesTags: ["USER"],
     }),
     getProfile: builder.query<UserProfile, void>({
       query: () => ({ url: "/users/me" }),
       providesTags: ["USER"],
+    }),
+    checkUsernameAvailability: builder.query<UsernameAvailability, string>({
+      query: (username) => ({
+        url: "/users/username-availability",
+        params: { username },
+      }),
+      keepUnusedDataFor: 0,
     }),
     updateProfile: builder.mutation<UserProfile, UpdateProfilePayload>({
       query: (data: UpdateProfilePayload) => ({
@@ -109,7 +132,10 @@ export const {
   useVerifyOTPMutation,
   useResetPasswordMutation,
   useChangePasswordMutation,
+  useGetPasswordStatusQuery,
+  useSetPasswordMutation,
   useGetProfileQuery,
+  useCheckUsernameAvailabilityQuery,
   useUpdateProfileMutation,
   useDeleteMyAccountMutation,
   useLogoutMutation,

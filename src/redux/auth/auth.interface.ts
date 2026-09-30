@@ -20,6 +20,14 @@ export interface AuthToken {
   token_type: string;
 }
 
+export interface PasswordStatus {
+  has_password: boolean;
+}
+
+export interface SetPasswordPayload {
+  new_password: string;
+}
+
 export interface VerifyOtpPayload {
   email: string;
   otp: string;
@@ -37,7 +45,12 @@ export interface UserProfile {
 }
 
 export interface UpdateProfilePayload {
+  username?: string;
   firstname?: string;
   lastname?: string;
   email?: string;
+}
+
+export interface UsernameAvailability {
+  available: boolean;
 }
