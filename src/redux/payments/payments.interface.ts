@@ -10,9 +10,11 @@ export interface PaymentRecord {
   trip_id: number;
   amount: number;
   status: string;
-  payment_method?: string;
-  transaction_id?: string;
+  payment_method: string;
+  transaction_id: string;
   receipt_url?: string | null;
+  created_at: string;
+  paid_at: string | null;
 }
 
 export interface PaymentListResponse {

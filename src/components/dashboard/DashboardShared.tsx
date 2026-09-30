@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router";
 import {
   Activity,
   Ambulance,
+  Banknote,
   CircleUserRound,
   ClipboardList,
   LayoutDashboard,
@@ -50,6 +51,7 @@ const navigationByRole: Record<DashboardRole, NavItem[]> = {
     { label: "Book a ride", href: "booking", icon: Plus },
     { label: "My requests", href: "requests", icon: ClipboardList },
     { label: "My trips", href: "trips", icon: Truck },
+    { label: "My payments", href: "payments", icon: Banknote },
     { label: "Profile", href: "profile", icon: UserRound },
     { label: "Account", href: "account", icon: CircleUserRound },
   ],
@@ -57,6 +59,7 @@ const navigationByRole: Record<DashboardRole, NavItem[]> = {
     { label: "Overview", href: "overview", icon: LayoutDashboard },
     { label: "Dispatch queue", href: "dispatch", icon: Activity },
     { label: "My trips", href: "trips", icon: Truck },
+    { label: "My payments", href: "payments", icon: Banknote },
     { label: "Profile", href: "profile", icon: UserRound },
     { label: "Account", href: "account", icon: CircleUserRound },
   ],

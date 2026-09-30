@@ -43,14 +43,14 @@ export function DashboardSectionRoute() {
   }
 
   if (role === "passenger") {
-    const passengerPages: PassengerDashboardPage[] = ["overview", "booking", "requests", "trips"];
+    const passengerPages: PassengerDashboardPage[] = ["overview", "booking", "requests", "trips", "payments"];
     if (!passengerPages.includes(section as PassengerDashboardPage)) {
       return <Navigate to={`/dashboard/${role}/overview`} replace />;
     }
     return <PassengerDashboard page={section as PassengerDashboardPage} />;
   }
 
-  const driverPages: DriverDashboardPage[] = ["overview", "dispatch", "trips"];
+  const driverPages: DriverDashboardPage[] = ["overview", "dispatch", "trips", "payments"];
   if (!driverPages.includes(section as DriverDashboardPage)) {
     return <Navigate to={`/dashboard/${role}/overview`} replace />;
   }
