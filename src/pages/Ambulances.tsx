@@ -214,13 +214,15 @@ const Ambulances = () => {
             <p className="mt-2 text-sm text-[#647b8b]">Try another status or search term.</p>
           </div>
         )}
-        <PaginationControls
-          page={page}
-          pageCount={pageCount}
-          pageSize={pageSize}
-          total={total}
-          onPageChange={setPage}
-        />
+        <div className="mt-8">
+          <PaginationControls
+            page={page}
+            pageCount={pageCount}
+            pageSize={pageSize}
+            total={total}
+            onPageChange={setPage}
+          />
+        </div>
       </section>
 
       <section className="bg-[#102a43]">
